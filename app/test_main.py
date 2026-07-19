@@ -1,7 +1,6 @@
 from unittest import mock
 
-from app.main import (valid_google_url,
-                      can_access_google_page)
+from app.main import can_access_google_page
 
 
 @mock.patch("app.main.has_internet_connection")
@@ -10,9 +9,9 @@ def test_can_access_google_page_when_url_valid_and_has_internet(
     mock_valid_google_url: mock.MagicMock,
     mock_has_internet_connection: mock.MagicMock,
 ) -> None:
-    mock_valid_google_url().return_value = True
-    mock_has_internet_connection().return_value = True
-    result = valid_google_url("https://google.com")
+    mock_valid_google_url.return_value = True
+    mock_has_internet_connection.return_value = True
+    result = can_access_google_page("https://google.com")
     assert result is True
 
 
